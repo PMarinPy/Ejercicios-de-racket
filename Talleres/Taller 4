@@ -1,0 +1,71 @@
+#lang racket
+;Ejercicios de racket, taller 4, elaborado por Juan Pablo Marín.
+
+;1. Suma de 5 números
+
+(define (suma a b c d e)
+  (+ a b c d e)
+  )
+
+(define (suma_de_cinco_numeros)
+  (define a 0)
+  (define b 0)
+  (define c 0)
+  (define d 0)
+  (define e 0)
+  (display "Está usando una función para sumar 5 números.\n")
+  (display "Número 1: ")
+  (set! a (read))
+  (display "Número 2: ")
+  (set! b (read))
+  (display "Número 3: ")
+  (set! c (read))
+  (display "Número 4: ")
+  (set! d (read))
+  (display "Número 5: ")
+  (set! e (read))
+  (suma a b c d e)
+  )
+;(suma_de_cinco_numeros)
+
+;Resta de dos números
+
+(define (restados a b)
+  (- a b)
+  )
+
+(define (resta)
+  (define a 0)
+  (define b 0)
+  (display "Está usando una función para restar dos números\n")
+  (display "Número 1: ")
+  (set! a (read))
+  (display "Número 2: ")
+  (set! b (read))
+  (restados a b)
+  )
+
+;(resta)
+
+;División de tres números
+
+(define (div a b c)
+  (/ a b c)
+  )
+
+(define ( dividir_tres_num)
+  (define a 0)
+  (define b 0)
+  (define c 0)
+  (display "Está usando una función para dividir tres números\n")
+  (display "Número 1: ")
+  (set! a (read))
+  (display "Número 2: ")
+  (set! b (read))
+  (display "Número 3: ")
+  (set! c (read))
+  (div a b c)
+  )
+;(dividir_tres_num)
+
+;
