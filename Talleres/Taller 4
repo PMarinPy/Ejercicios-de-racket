@@ -57,7 +57,21 @@
 
 ;División de tres números
 
+(define ( dividir_tres_num)
+  (define a 0)
+  (define b 0)
+  (define c 0)
+  (display "Está usando una función para dividir tres números\n")
+  (display "Número 1: ")
+  (set! a (read))
+  (display "Número 2: ")
+  (set! b (read))
+  (display "Número 3: ")
+  (set! c (read))
+  (/ a b c)
+  )
 
+;(dividir_tres_num)
 
 (define ( dividir_tres_num)
   (define a 0)
@@ -74,4 +88,149 @@
   )
 ;(dividir_tres_num)
 
-;
+;Calcular Valor absoluto
+
+(define (valor_absoluto)
+  (define a 0)
+  (display "Está usando una función para calcular el valor absoluto de un número real distinto de 0\n")
+  (display "Número: ")
+  (set! a (read))
+  (if (< a 0)
+      (display (* a -1))
+      (display a)
+
+      )
+  )
+;(valor_absoluto)
+
+;Reste 1 a un número
+
+(define (restar_uno)
+  (define a 0)
+  (display "Está usando una función para restar 1 a un número\n")
+  (display "Número:")
+  (set! a(read))
+  (- a 1)
+  )
+;(restar_uno)
+
+;Calcule el denominador de un número racional
+
+;Elevar un número a una potencia dada
+
+(define (elevar_a_x)
+  (define a 0)
+  (define pot 0)
+  (display "Está usando una función para hacer una potencia\n")
+  (display "Número:")
+  (set! a (read) )
+  (display "Elevado a la: ")
+  (set! pot (read))
+  (expt a pot)
+  )
+;(elevar_a_x)
+
+;Calcule la raíz cuadrada de un número
+
+(define (raiz)
+  (define a 0)
+  (display "Está usando una función para hacer una raiz cuadrada\n")
+  (display "Número:")
+  (set! a (read) )
+  (sqrt a)
+  )
+;(raiz)
+
+;Calcule el residuo de una división entera
+
+(define (residuo)
+  (define a 0)
+  (define b 0)
+  (display "Está usando una función para obtener un residuo\n")
+  (display "Dividendo: ")
+  (set! a (read) )
+  (display "Divisor: ")
+  (set! b (read) )
+  (remainder a b)
+  )
+
+;(residuo)
+
+; Calcula el logaritmo de un número
+
+(define (calcular_logaritmo)
+  (define numero 0)
+  (display "Ingrese un número para calcular su logaritmo: ")
+  (set! numero (read))
+  (display "El logaritmo de ")
+  (display numero)
+  (display " es: ")
+  (displayln (log numero))
+  )
+
+;(calcular_logaritmo)
+
+; Calcula el número más grande entre 5 números
+
+(define (maximo_entre-cinco)
+  (define a 0)
+  (define b 0)
+  (define c 0)
+  (define d 0)
+  (define e 0)
+  (display "Está usando una función para encontrar el número más grande entre 5:\n ")
+  (display "Número 1: ")
+  (set! a (read))
+  (display "Número 2: ")
+  (set! b (read))
+  (display "Número 3: ")
+  (set! c (read))
+  (display "Número 4: ")
+  (set! d (read))
+  (display "Número 5: ")
+  (set! e (read))
+  (display "El número más grande es: ")
+  (max a b c d e)
+  )
+
+;(maximo_entre-cinco)
+
+; Calcula el número más pequeño entre 5 números
+
+(define (minimo_entre_cinco)
+  (define numeros '(0 0 0 0 0))
+  (display "Ingrese cinco números separados por espacios: ")
+  (set! numeros (map string->number (string-split (read-line) " ")))
+  (display "El número más pequeño es: ")
+  (displayln (apply min numeros))
+  )
+
+; Genera un número aleatorio
+(define (generar_aleatorio)
+  (define limite 0)
+  (display "Ingrese el límite para el número aleatorio: ")
+  (set! limite (read))
+  (display "El número aleatorio generado es: ")
+  (displayln (random limite))
+  )
+
+; Redondea un número
+
+(define (redondear-numero)
+  (define numero 0)
+  (display "Ingrese un número para redondear: ")
+  (set! numero (read))
+  (display "El número redondeado es: ")
+  (displayln (round numero)))
+
+; Eleva al cuadrado un número
+
+(define (elevar-al-cuadrado)
+  (define numero 0)
+  (display "Ingrese un número para elevar al cuadrado: ")
+  (set! numero (read))
+  (display "El cuadrado de ")
+  (display numero)
+  (display " es: ")
+  (displayln (* numero numero)))
+
