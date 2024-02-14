@@ -24,6 +24,21 @@
   )
 (suma_de_cinco_numeros)
 
+;Calcular Valor absoluto
+
+(define (valor_absoluto)
+  (define a 0)
+  (display "Está usando una función para calcular el valor absoluto de un número real distinto de 0\n")
+  (display "Número: ")
+  (set! a (read))
+  (if (< a 0)
+      (display (* a -1))
+      (display a)
+
+      )
+  )
+;(valor_absoluto)
+
 ;Resta de dos números
 
 
