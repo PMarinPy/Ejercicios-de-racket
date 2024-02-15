@@ -91,17 +91,17 @@
   )
 
 (display "
-      -+****+:          ¡Bienvenido a la calculadora geométrica! Seleccione 1                                -+****+:      
-   :##**++++**#*.       1. Area de un disco                                                                                                              :##**++++**#*.   
- .*#*+===--===+*#       2. volumen de un cilindro                                                                                                             .*#*+===--===+*#*  
- **+==-:::::--=+*#+     3. Volumen de una esfera                                                                                                             **+==-:::::--=+*#+ 
--#*+=-:.....::-=+*#:    4. Volumen de un cono                                                                                                             -#*+=-:.....::-=+*#:
-+*+=-::.    .:--=*#+    5. Area de un cono                                                                                                          +*+=-::.    .:--=*#-
-=#*+=-:.....::-=+*#=    6. Volumen de un cono truma                                                                                                           =#*+=-:.....::-=+*#:
- **+==-::::::-=+*#+     7. Fahrenheit a                                                                                                             **+==-::::::-=+*#+ 
- .##*+==---===+*#*      6. Volumen De Un Cono Truma                                                                                                             .##*+==---===+*#*  
-   -##**++++**#*:       7. Fahrenheit a Celsius                                                                                                                -##**++++**#*:   
-      -*****+-          8. Distancia Entre Dos Puntos                                                                                                                   -*****+-       
+      -+****+:          ¡Bienvenido a la calculadora geométrica! Seleccione 1         -+****+:      
+   :##**++++**#*.       1. Area de un disco                                        :##**++++**#*.   
+ .*#*+===--===+*#       2. volumen de un cilindro                                .*#*+===--===+*#*  
+ **+==-:::::--=+*#+     3. Volumen de una esfera                                 **+==-:::::--=+*#+ 
+-#*+=-:.....::-=+*#:    4. Volumen de un cono                                   -#*+=-:.....::-=+*#:
++*+=-::.    .:--=*#+    5. Area de un cono                                      +*+=-::.    .:--=*#-
+=#*+=-:.....::-=+*#=    6. Volumen de un cono truma                             =#*+=-:.....::-=+*#:
+ **+==-::::::-=+*#+     7. Fahrenheit a Celsius                                  **+==-::::::-=+*#+ 
+ .##*+==---===+*#*      8. Distancia Entre Dos Puntos                             .##*+==---===+*#*  
+   -##**++++**#*:       9  Pendiente de una recta                                   -##**++++**#*:   
+      -*****+-          8. Hallar hipotenusa                                          -*****+-                                                                                                        -*****+-       
   
 
 
