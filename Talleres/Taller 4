@@ -1,0 +1,109 @@
+#lang racket
+
+;Área de un disco.
+(define (calc_disco r)
+  (* pi (expt r 2))
+  )
+    
+(define (AreaDelDisco)
+  (define r 0)
+  (display "Está usando una función para calcular el área de un disco.\nPor favor introcduzca el radio: ")
+  (set! r (read))
+  (calc_disco r)
+  )
+
+
+;Volumen de un cilindro. 
+(define (VolumenCil r h)
+  ( * pi (expt r 2) h)
+  )
+
+(define (VolumenDeUnCilindro)
+  (define r 0)
+  (define h 0)
+  (display "Está usando una función para calcular el volumen de un cilindro.\nPor favor introcduzca el radio: ")
+  (set! r (read))
+  (display "Por favor introduzca la altura: ")
+  (set! h (read))
+  (VolumenCil r h)
+  )
+
+;Volumen de una esfera
+(define (Esfera r)
+  (* (/ 4 3) pi (expt r 3))
+  )
+
+(define (VolumenDeUnaEsfera)
+  (define r 0)
+  (display "Está usando una función para calcular el volumen de un esfera.\nPor favor introcduzca el radio: ")
+  (set! r (read))
+  (Esfera r)
+  )
+
+;Volumen de un cono.
+
+(define (VolCono r h)
+  (* (/ 4 3) pi (expt r 2) h)
+  )
+
+(define (VolumenDeUnCono)
+  (define h 0)
+  (define r 0)
+  (display "Está usando una función para calcular el volumen de un cono.\nPor favor introcduzca el radio: ")
+  (set! r (read))
+  (display "Por favor introcduzca la altura: ")
+  (set! h (read))
+  (VolCono r h)
+  )
+
+;Área de un cono.
+
+(define (AreaCono r h)
+  (define g 0)
+  (set! g (sqrt (+ (expt h 2) (expt r 2))))
+  (* pi (+ (* r 2) pi) r g)
+  )
+
+
+
+(define (AreaDelCono)
+  (define h 0)
+  (define r 0)
+  (display "Está usando una función para calcular el área de un cono.\nPor favor introcduzca el radio: ")
+  (set! r (read))
+  (display "Por favor introcduzca la altura: ")
+  (set! h (read))
+  (AreaCono r h)
+)
+
+(define (VolConoT R r)
+  (* pi (+ (expt R 2) (expt r 2) R (* r R)))
+  )
+     
+(define (VolumenDeUnConoTruma)
+  (define R 0)
+  (define r 0)
+  (display "Está usando una función para calcular el volumen de un cono Truma.\nPor favor introcduzca el radio menor: ")
+  (set! r (read))
+  (display "Por favor introcduzca el radio mayor: ")
+  (set! R (read))
+  (VolConoT R r)
+  )
+
+(display "
+      -+****+:          ¡Bienvenido a la calculadora geométrica! Seleccione 1                                -+****+:      
+   :##**++++**#*.       1. Area de un disco                                                                                                              :##**++++**#*.   
+ .*#*+===--===+*#       2. volumen de un cilindro                                                                                                             .*#*+===--===+*#*  
+ **+==-:::::--=+*#+     3. Volumen de una esfera                                                                                                             **+==-:::::--=+*#+ 
+-#*+=-:.....::-=+*#:    4. Volumen de un cono                                                                                                             -#*+=-:.....::-=+*#:
++*+=-::.    .:--=*#+    5. Area de un cono                                                                                                          +*+=-::.    .:--=*#-
+=#*+=-:.....::-=+*#=    6. Volumen de un cono truma                                                                                                           =#*+=-:.....::-=+*#:
+ **+==-::::::-=+*#+     7. Fahrenheit a                                                                                                             **+==-::::::-=+*#+ 
+ .##*+==---===+*#*      6. Volumen De Un Cono Truma                                                                                                             .##*+==---===+*#*  
+   -##**++++**#*:       7. Fahrenheit a Celsius                                                                                                                -##**++++**#*:   
+      -*****+-          8. Distancia Entre Dos Puntos                                                                                                                   -*****+-       
+  
+
+
+
+")
