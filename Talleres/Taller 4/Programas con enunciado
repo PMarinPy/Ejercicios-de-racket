@@ -1,3 +1,5 @@
+#lang racket
+;Calcular impuestos
 (define (Imp pago)
     (* 0.15 pago) 
 )
@@ -13,7 +15,7 @@
 (define (Monedas a b c d e)
     (+ (* 20 a) (* 50 b) (* 100 c) (* 200 d) (* 500 e))
 )
-
+;Sumar monedas
 (define (SumarMonedas)
     (define a 0)
     (define b 0)
@@ -34,10 +36,10 @@
     (Monedas a b c d e)
     
 )
-
+;Ganancias de obras
 (define (Ganancias e)
     (- (* 10000 e) 30000
-)
+))
 
 (define (CalcularGanancias)
     (define e 0)
