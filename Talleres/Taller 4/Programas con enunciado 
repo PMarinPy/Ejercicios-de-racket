@@ -34,3 +34,15 @@
     (Monedas a b c d e)
     
 )
+
+(define (Ganancias e)
+    (- (* 10000 e) 30000
+)
+
+(define (CalcularGanancias)
+    (define e 0)
+    (display "Esta usando una funcion para calcular ganancias por impuestos.\n¿Cuantas personas asistieron: ")
+    (set! e (read))
+    (display "Las ganancias fueron: ")
+    (Ganancias e)
+)
