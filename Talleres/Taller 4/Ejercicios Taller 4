@@ -195,15 +195,6 @@
 
 ;(maximo_entre-cinco)
 
-; Calcula el número más pequeño entre 5 números
-
-(define (minimo_entre_cinco)
-  (define numeros '(0 0 0 0 0))
-  (display "Ingrese cinco números separados por espacios: ")
-  (set! numeros (map string->number (string-split (read-line) " ")))
-  (display "El número más pequeño es: ")
-  (displayln (apply min numeros))
-  )
 
 ; Genera un número aleatorio
 (define (generar_aleatorio)
