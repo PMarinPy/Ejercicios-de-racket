@@ -1,0 +1,11 @@
+(define (Imp pago)
+    (* 0.15 pago) 
+)
+
+(define (CalcularImpuesto)
+    (define pago 0)
+    (display "Esta usando una funcion para calcular el impuedto de un contador.\nDigite la el pago: ")
+    (set! pago (read))
+    (display "El impuesto es:")
+    (Imp pago)
+)
