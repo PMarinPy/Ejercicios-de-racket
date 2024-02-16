@@ -1,5 +1,9 @@
 #lang racket
 
+;En CamelCase
+
+(define resultado "El resultado es: ")
+ 
 ;Área de un disco.
 (define (calc_disco r)
   (* pi (expt r 2))
@@ -9,6 +13,7 @@
   (define r 0)
   (display "Está usando una función para calcular el área de un disco.\nPor favor introcduzca el radio: ")
   (set! r (read))
+  (display resultado)
   (calc_disco r)
   )
 
@@ -18,13 +23,14 @@
   ( * pi (expt r 2) h)
   )
 
-(define (VolumenDeUnCilindro)
+(define (VolumenCilindro)
   (define r 0)
   (define h 0)
   (display "Está usando una función para calcular el volumen de un cilindro.\nPor favor introcduzca el radio: ")
   (set! r (read))
   (display "Por favor introduzca la altura: ")
   (set! h (read))
+  (display resultado)
   (VolumenCil r h)
   )
 
@@ -37,6 +43,7 @@
   (define r 0)
   (display "Está usando una función para calcular el volumen de un esfera.\nPor favor introcduzca el radio: ")
   (set! r (read))
+  (display resultado)
   (Esfera r)
   )
 
@@ -53,6 +60,7 @@
   (set! r (read))
   (display "Por favor introcduzca la altura: ")
   (set! h (read))
+  (display resultado)
   (VolCono r h)
   )
 
@@ -73,8 +81,11 @@
   (set! r (read))
   (display "Por favor introcduzca la altura: ")
   (set! h (read))
+  (display resultado)
   (AreaCono r h)
 )
+
+;Volumen del cono truma
 
 (define (VolConoT R r)
   (* pi (+ (expt R 2) (expt r 2) R (* r R)))
@@ -83,27 +94,118 @@
 (define (VolumenDeUnConoTruma)
   (define R 0)
   (define r 0)
-  (display "Está usando una función para calcular el volumen de un cono Truma.\nPor favor introcduzca el radio menor: ")
+  (display "Está usando una función para calcular el volumen de un cono Truma.\nPor favor introcduzca el valor del radio menor: ")
   (set! r (read))
-  (display "Por favor introcduzca el radio mayor: ")
+  (display "Por favor introcduzca el valor del radio mayor: ")
   (set! R (read))
+  (display resultado)
   (VolConoT R r)
   )
 
+;convertir grados Fahrenheit a celcius
+
+(define (FahrenheitAC F)
+  (* (- F 32) (/ 5 9)
+     ))
+(define (FahrenheitACelcius)
+  (define F 0)
+  (display "Está usando una función para convertir grados fahrenheit a celicius.\nGrados Fahrenheit: ")
+  (set! F (read))
+  (display resultado)
+  (FahrenheitAC F)
+  )
+;Hallar distancia entre dos puntos
+
+(define (Distancia x1 y1 x2 y2)
+  (sqrt (+ (expt (- x2 x1) 2) (expt (- y2 y1) 2)))
+  )
+(define (DistanciaDosPuntos)
+  (define x1 0)
+  (define x2 0)
+  (define y1 0)
+  (define y2 0)
+  (display "Está usando una función para hallar la distancia entre dos puntos.\nPrimera coordenada de X: ")
+  (set! x1 (read))
+  (display "Segunda coordenada de X: ")
+  (set! x2 (read))
+  (display "Primera coordenada de Y: ")
+  (set! y1 (read))
+  (display "Segunda coordenada de Y: ")
+  (set! y2 (read))
+  (display resultado)
+  (Distancia x1 y1 x2 y2)
+  )
+
+; Hallar una pendiente
+
+(define (Pendiente x1 x2 y1 y2)
+  (/ (- y2 y1) (- x1 x2))
+  )
+(define (HallarPendiente)
+  (define x1 0)
+  (define x2 0)
+  (define y1 0)
+  (define y2 0)
+  (display "Está usando una función para hallar la pendiente de una recta (expresada en decimal).\nPrimera coordenada de X: ")
+  (set! x1 (read))
+  (display "Segunda coordenada de X: ")
+  (set! x2 (read))
+  (display "Primera coordenada de Y: ")
+  (set! y1 (read))
+  (display "Segunda coordenada de Y: ")
+  (set! y2 (read))
+  (display resultado)
+  (Pendiente x1 x2 y1 y2)
+  )
+
+(define (Hipotenusa c1 c2)
+  (sqrt (+ (expt c1 2) (expt c2 2))
+        ))
+(define (HallarHipotenusa)
+  (define c1 0)
+  (define c2 0)
+  (display "Está usando una función para hallar lña hipotenusa (conociendo dos lados).\nPrimera cateto: ")
+  (set! c1 (read))
+  (display "Segunda cateto: ")
+  (set! c2 (read))
+  (display resultado)
+  (Hipotenusa c1 c2)
+  )
+
+
 (display "
-      -+****+:          ¡Bienvenido a la calculadora geométrica! Seleccione 1         -+****+:      
-   :##**++++**#*.       1. Area de un disco                                        :##**++++**#*.   
- .*#*+===--===+*#       2. volumen de un cilindro                                .*#*+===--===+*#*  
- **+==-:::::--=+*#+     3. Volumen de una esfera                                 **+==-:::::--=+*#+ 
--#*+=-:.....::-=+*#:    4. Volumen de un cono                                   -#*+=-:.....::-=+*#:
-+*+=-::.    .:--=*#+    5. Area de un cono                                      +*+=-::.    .:--=*#-
-=#*+=-:.....::-=+*#=    6. Volumen de un cono truma                             =#*+=-:.....::-=+*#:
- **+==-::::::-=+*#+     7. Fahrenheit a Celsius                                  **+==-::::::-=+*#+ 
- .##*+==---===+*#*      8. Distancia Entre Dos Puntos                             .##*+==---===+*#*  
-   -##**++++**#*:       9  Pendiente de una recta                                   -##**++++**#*:   
-      -*****+-          8. Hallar hipotenusa                                          -*****+-                                                                                                        -*****+-       
+      -+****+:              ¡Bienvenido a la calculadora geométrica! Seleccione:          -+****+:      
+   :##**++++**#*.           1. Area de un disco                                        :##**++++**#*.   
+ .*#*+===--===+*#           2. volumen de un cilindro                                .*#*+===--===+*#*  
+ **+==-:::::--=+*#+         3. Volumen de una esfera                                 **+==-:::::--=+*#+ 
+-#*+=-:.....::-=+*#:        4. Volumen de un cono                                   -#*+=-:.....::-=+*#:
++*+=-::.    .:--=*#+        5. Area de un cono                                      +*+=-::.    .:--=*#-
+=#*+=-:.....::-=+*#=        6. Volumen de un cono truma                             =#*+=-:.....::-=+*#:
+ **+==-::::::-=+*#+         7. Fahrenheit a Celsius                                  **+==-::::::-=+*#+ 
+ .##*+==---===+*#*          8. Distancia Entre Dos Puntos                             .##*+==---===+*#*  
+   -##**++++**#*:           9. Pendiente de una recta                                   -##**++++**#*:   
+      -*****+-              10. Hallar hipotenusa                                          -*****+-       
   
 
 
 
 ")
+
+(define (accion)
+  (define numero 0)
+  (set! numero (read))
+  (cond
+    [(= numero 1) (AreaDelDisco)]
+    [(= numero 2) (VolumenCilindro)]
+    [(= numero 3) (VolumenDeUnaEsfera)]
+    [(= numero 4) (VolumenDeUnCono)]
+    [(= numero 5) (AreaDelCono)]
+    [(= numero 6) (VolumenDeUnConoTruma)]
+    [(= numero 7) (FahrenheitACelcius)]
+    [(= numero 8) (DistanciaDosPuntos)]
+    [(= numero 9) (HallarPendiente)]
+    [(= numero 10) (HallarHipotenusa)]
+    [else (displayln "Número fuera de rango, por favor ingrese un número del 1 al 10")]
+  ))
+
+(accion)
