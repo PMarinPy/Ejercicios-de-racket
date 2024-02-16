@@ -20,7 +20,7 @@
     (define c 0)
     (define d 0)
     (define e 0)
-    (display "Esta usando una funcion para sumar monedas .\nCantidad de monedas de 20: ")
+    (display "Esta usando una funcion para sumar monedas.\nCantidad de monedas de 20: ")
     (set! a (read))
     (display "Cantidad de monedas de 50: ")
     (set! b (read))
