@@ -1,3 +1,53 @@
+#lang racket
 (define (CelsiusFah grados)
   (+ * (grados (/ 9 5)) 32))
+
+(define (mostrarFah)
+  (define grados 0)
+  (CelsiusFah grados))
+;Velocidad de un auto
+
+(define (hallarvel t)
+  (* (/ 100 35) t))
+
+(define (calcvel)
+  (define t 0)
+  (display "Está usando una función para hallar la velocidad con respecto a el tiempo.\nDigite los segundos: ")
+  (set! t (read))
+  (display "La velocidad alcanzada es: ")
+  (hallarvel t))
+
+;Area de un triángulo
+(define (areat b h)
+  (/ (* b h) 2))
+
+(define (calcArea)
+  (define b 0)
+  (define h 0)
+  (display "Está usando una función para calcular el área de un triangulo.\nDigite la base: ")
+  (set! b (read))
+  (display "Digite la altura: ")
+  (set! h (read))
+  (display "El área del triángulo es: ")
+  (areat b h))
+;COP a euro y dolar
+
+(define (pesoEuro peso)
+  (* peso 0.00023765198))
+
+(define (pesoDolar peso)
+  (* peso 0.00025570711))
+
+(define (pesoA)
+  (define peso 0)
+  (define num 0)
+  (display "Está usando una función para convertir pesos a dólares o euros.\nPesos: ")
+  (set! peso (read))
+  (display "imprima 1 para pesos a dólares o 2 para pesos a euros: ")
+  (set! num (read))
+  (cond
+    [(= num 1) (pesoDolar peso)]
+    [(= num 2) (pesoEuro peso)] ))
+
+;Volumen esfera
 
