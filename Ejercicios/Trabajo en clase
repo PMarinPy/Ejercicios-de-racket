@@ -1,0 +1,3 @@
+(define (CelsiusFah grados)
+  (+ * (grados (/ 9 5)) 32))
+
