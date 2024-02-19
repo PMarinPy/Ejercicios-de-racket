@@ -1,0 +1,26 @@
+#lang racket
+;Práctica de clase
+
+(define(PulgadaCm pul )
+  (* 2.54 pul))
+
+(define(PiePulgada pie)
+  (* pie 12))
+
+(define(YardaPie yar)
+  (* yar 3))
+
+(define (VarYarda var)
+  (* var 0.9142 ))
+
+(define (PieCm pie)
+  (PulgadaCm (PiePulgada pie)))
+
+(define (YardaCm yar)
+  (PieCm (YardaPie yar)))
+
+(define (VarPulgada var)
+  (PulgadaCm (VarPul (VarYarda var))))
+
+(define (VarPie var)
+  (YardaPie (VarYarda var)))
