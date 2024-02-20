@@ -50,4 +50,19 @@
     [(= num 2) (pesoEuro peso)] ))
 
 ;Volumen esfera
+(define (areae r)
+  (* (expt r 2) (* 4 pi)))
 
+(define (volesfera r)
+  (* (* (/ 3 4 ) pi) (expt r 3)))
+
+(define (areaYvol)
+  (define r 0)
+  (display "Está usando una función para calcular el volumen y el área de una esfera.\nIntroduzca el radio: ")
+  (set! r (read))
+  (display "El volumen de la esfera es: ")
+  (display (areae r))
+  (display "\nY su área es: ")
+  (display (volesfera r)))
+ 
+(areaYvol)
