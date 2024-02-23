@@ -6,7 +6,7 @@
   (define grados 0)
   (CelsiusFah grados))
 ;Velocidad de un auto
-
+;2
 (define (hallarvel t)
   (* (/ 100 35) t))
 
@@ -17,7 +17,7 @@
   (display "La velocidad alcanzada es: ")
   (hallarvel t))
 
-;Area de un triángulo
+;3
 (define (areat b h)
   (/ (* b h) 2))
 
@@ -32,37 +32,119 @@
   (areat b h))
 ;COP a euro y dolar
 
-(define (pesoEuro peso)
-  (* peso 0.00023765198))
+;4.
+(define (convertir-a-euros pesos)
+  (define tasa-euro 0.00024)
+  (* pesos tasa-euro))
 
-(define (pesoDolar peso)
-  (* peso 0.00025570711))
+(define (convertir-a-dolares pesos)
+  (define tasa-dolar 0.00027)
+  (* pesos tasa-dolar))
 
-(define (pesoA)
-  (define peso 0)
-  (define num 0)
-  (display "Está usando una función para convertir pesos a dólares o euros.\nPesos: ")
-  (set! peso (read))
-  (display "imprima 1 para pesos a dólares o 2 para pesos a euros: ")
-  (set! num (read))
-  (cond
-    [(= num 1) (pesoDolar peso)]
-    [(= num 2) (pesoEuro peso)] ))
+(define (convertir-y-mostrar-monedas)
+  (define pesos 0)
+  (display "Funcion para pasar de pesos a euros y dólares.\nPesos: ")
+  (set! pesos (read))
+  (define resultado-euros (convertir-a-euros pesos))
+  (define resultado-dolares (convertir-a-dolares pesos))
+  (display "El valor en dólares es: ")
+  (display resultado-dolares)
+  (display "\nEl valor en euros es: ")
+  (display resultado-euros))
 
-;Volumen esfera
-(define (areae r)
-  (* (expt r 2) (* 4 pi)))
+;5
+(define (calcular-volumen-esfera radio)
+  (/ (* 4 pi (* radio radio radio)) 3))
 
-(define (volesfera r)
-  (* (* (/ 3 4 ) pi) (expt r 3)))
+(define (calcular-area-esfera radio)
 
-(define (areaYvol)
-  (define r 0)
-  (display "Está usando una función para calcular el volumen y el área de una esfera.\nIntroduzca el radio: ")
-  (set! r (read))
-  (display "El volumen de la esfera es: ")
-  (display (areae r))
-  (display "\nY su área es: ")
-  (display (volesfera r)))
- 
-(areaYvol)
+  (* 4 pi (* radio radio)))
+
+(define (pedir-valores-y-calcular-esfera)
+  (display "Ingrese el radio de la esfera: ")
+  (define radio (read))
+  (define area (calcular-area-esfera radio))
+  (define volumen (calcular-volumen-esfera radio))
+  (display "El área de la esfera es: ")
+  (display area)
+  (display "\nEl volumen de la esfera es: ")
+  (display volumen))
+
+(pedir-valores-y-calcular-esfera)  
+;6
+(define (calcular-area-cilindro radio altura)
+  (+ (* pi (* radio radio)) (* 2 pi radio altura)))
+
+(define (calcular-volumen-cilindro radio altura)
+  (* pi (* radio radio) altura))
+
+(define (pedir-valores-y-calcular-cilindro)
+  (display "Ingrese el radio del cilindro: ")
+  (define radio (read))
+  (display "Ingrese la altura del cilindro: ")
+  (define altura (read))
+  (define area (calcular-area-cilindro radio altura))
+  (define volumen (calcular-volumen-cilindro radio altura))
+  (display "El área del cilindro es: ")
+  (display area)
+  (display "\nEl volumen del cilindro es: ")
+  (display volumen))
+
+;7
+(define (calcular-neto sueldo dias-trabajados salud pension)
+  (define salario (* sueldo dias-trabajados))
+  (define descuentos (+ salud pension))
+  (- salario descuentos))
+
+(define (pedir-datos-y-calcular-neto)
+  (display "Ingrese el sueldo básico mensual: ")
+  (define sueldo (read))
+  (display "Ingrese los días trabajados: ")
+  (define dias-trabajados (read))
+  (display "Ingrese el descuento por salud: ")
+  (define salud (read))
+  (display "Ingrese el descuento por pensión: ")
+  (calcular-neto sueldo dias-trabajados salud (read)))
+;8
+(define (convertir-medida metros)
+  (define km (/ metros 1000))
+  (define cm (* metros 100))
+  (display km)
+  (display cm))
+
+(define (pedir-medida-y-convertir)
+  (display "Ingrese la medida en metros: ")
+  (convertir-medida (read)))
+;9
+(define (convertir-bytes kilobytes)
+  (define gigabytes (/ kilobytes (* 1024 1024)))
+  (define bits (* kilobytes 8192))
+  (display gigabytes)
+  (display bits))
+;10
+(define (pedir-kilobytes-y-convertir)
+  (display "Ingrese la cantidad en KiloBytes: ")
+  (convertir-bytes (read)))
+;11
+(define (operaciones-basicas num1 num2)
+  (display (+ num1 num2))
+  (display (- num1 num2))
+  (display (* num1 num2))
+  (display (/ num1 num2)))
+
+(define (pedir-dos-numeros-y-operar)
+  (display "Ingrese el primer número: ")
+  (define num1 (read))
+  (display "Ingrese el segundo número: ")
+  (operaciones-basicas num1 (read)))
+;12
+
+(define (calcular-pendiente x1 y1 x2 y2)
+  (display (/ (- y2 y1) (- x2 x1))))
+
+(define (pedir-coordenadas-y-calcular-pendiente)
+  (display "Ingrese las coordenadas del primer punto (x1 y1): ")
+  (define x1 (read))
+  (define y1 (read))
+  (display "Ingrese las coordenadas del segundo punto (x2 y2): ")
+  (calcular-pendiente x1 y1 (read) (read)))
