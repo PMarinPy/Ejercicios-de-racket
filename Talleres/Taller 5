@@ -106,15 +106,19 @@
   (display "Ingrese el descuento por pensión: ")
   (calcular-neto sueldo dias-trabajados salud (read)))
 ;8
-(define (convertir-medida metros)
-  (define km (/ metros 1000))
+(define (convertir-medidamt metros)
   (define cm (* metros 100))
-  (display km)
-  (display cm))
+(define (convertir-medidakm metros)
+  (define km (/ metros 1000))
+  
+
 
 (define (pedir-medida-y-convertir)
   (display "Ingrese la medida en metros: ")
   (convertir-medida (read)))
+  (display "Kilómetros y centimetros:\n "
+  (display (convertir-medidakm metros)
+  (display (convertir-medidamt)
 ;9
 (define (convertir-bytes kilobytes)
   (define gigabytes (/ kilobytes (* 1024 1024)))
