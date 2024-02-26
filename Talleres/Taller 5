@@ -70,7 +70,8 @@
   (display "\nEl volumen de la esfera es: ")
   (display volumen))
 
-(pedir-valores-y-calcular-esfera)  
+;(pedir-valores-y-calcular-esfera)  
+
 ;6
 (define (calcular-area-cilindro radio altura)
   (+ (* pi (* radio radio)) (* 2 pi radio altura)))
@@ -105,31 +106,35 @@
   (define salud (read))
   (display "Ingrese el descuento por pensión: ")
   (calcular-neto sueldo dias-trabajados salud (read)))
+
 ;8
 (define (convertir-medidamt metros)
-  (define cm (* metros 100))
+  (* metros 100))
+
 (define (convertir-medidakm metros)
-  (define km (/ metros 1000))
+  (/ metros 1000))
   
 
 
 (define (pedir-medida-y-convertir)
+  (define m 0)
   (display "Ingrese la medida en metros: ")
-  (convertir-medida (read)))
-  (display "Kilómetros y centimetros:\n "
-  (display (convertir-medidakm metros)
-  (display (convertir-medidamt)
+  (set! m (read))
+  (display "Kilómetros y centimetros:\n ")
+  (display (convertir-medidakm m))
+  (display (convertir-medidamt m)))
+
 ;9
 (define (convertir-bytes kilobytes)
   (define gigabytes (/ kilobytes (* 1024 1024)))
   (define bits (* kilobytes 8192))
   (display gigabytes)
   (display bits))
-;10
+
 (define (pedir-kilobytes-y-convertir)
   (display "Ingrese la cantidad en KiloBytes: ")
   (convertir-bytes (read)))
-;11
+;10
 (define (operaciones-basicas num1 num2)
   (display (+ num1 num2))
   (display (- num1 num2))
@@ -141,7 +146,35 @@
   (define num1 (read))
   (display "Ingrese el segundo número: ")
   (operaciones-basicas num1 (read)))
-;12
+
+(define (galones d r)
+  (/ d r))
+
+(define (precio g p)
+  (* g p))
+
+(define (pvalores)
+  (define d 0)
+  (define g 0)
+  (define p 0)
+  (define r 0)
+  (define e 0)
+  (define c 0)
+  (display "Función para calcular el precio de gasolina con respecto a cierta distancia y el consumo de el auto.\nDistancia a recorrer: ")
+  (set! d (read))
+  (display "¿Cuántos kilometros recorre con un galón? ")
+  (set! r (read))
+  (display "Ingrese el costo de la gasolina corriente: ")
+  (set! c (read))
+  (display "Gasolina extra: ")
+  (set! e (read))
+  (set! g (galones d r))
+  (set! e (precio g e))
+  (set! c (precio g c))
+  (printf "Necesita ~a galones para recorrer ~a kms. " g d )
+  (printf "El precio en gasolina corriente es ~a y en gasolina extra es ~a" c e) )
+(pvalores)
+;13
 
 (define (calcular-pendiente x1 y1 x2 y2)
   (display (/ (- y2 y1) (- x2 x1))))
