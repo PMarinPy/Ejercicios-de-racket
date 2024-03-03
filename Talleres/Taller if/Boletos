@@ -1,0 +1,28 @@
+#lang racket
+;-Dados como datos la distancia en kilómetros de un viaje de ida y vuelta, el valor por km recorrido y el número de días de
+;estancia. Calcule e imprima el precio del tiquete de ida y vuelta, teniendo en cuenta que si el número de días de estancia
+;es superior a 7 y la distancia total recorrida es superior a 500 Km, el tiquete tiene un descuento del 20 %.
+(define (calc km v)
+  (* km v ))
+(define (calculo)
+  (define km 0)
+  (define d 0)
+  (define v 0)
+  (display "Está usando una función para calcular el precio de un viaje.\nDigite los días que se quedará: ")
+  (set! d (read))
+  (display "Digite la cantidad total (ida y vuelta) de kilómetros que recorrerá: ")
+  (set! km (read))
+  (display "¿Cuál es el precio por cada kilómetro recorrido? ")
+  (set! v (read))
+  (if (and (> km 500)(> d 7))
+      (begin
+        (display "Tiene un descuento del 20% en los boletos de ida y venida.\nEl precio de su boleto es: " )
+        (displayln (* (calc km v) 0.80)))
+
+      (begin
+        (display "El precio de su boleto es de: ")
+        (displayln (calc km v))))
+
+      (calculo))
+
+(calculo)
