@@ -1,0 +1,37 @@
+#lang racket
+;-Después de leer el básico de un trabajador, calcule su salario neto con base en las siguientes consideraciones:
+;El trabajador recibe 75mil por concepto de Subsidio de transporte si su básico es menor o igual a 2 SMMLV
+;El trabajador aporta a salud y pensión el 4% de su Básico en cada caso
+;El trabajador aporta a Fondo de Solidaridad el 1% del básico si su básico es mayor a 4 SMMLV
+
+(define (csub sal min)
+  (if (<= sal (* min 2))
+      75000
+      0))
+
+(define (csalud sal)
+  (* sal 0.04))
+
+(define (csoli sal min)
+  (if (>= sal (* 4 min))
+      (* 0.01 sal)
+      0))
+
+(define (descuentos)
+  (define sal 0)
+  (define subsidio 0)
+  (define salud 0)
+  (define soli 0)
+  (define minimo 0)
+  (display "Función para calcular sueldo total.\nDigite el sueldo del trabajador: ")
+  (set! sal (read))
+  (display "Digite cuanto es un salario mínimo mensual legal vigente: ")
+  (set! minimo (read))
+  (set! soli (csoli sal minimo))
+  (set! subsidio (csub sal minimo))
+  (set! salud (csalud sal))
+  (display "El sueldo total es: ")
+  (displayln (+(- sal soli salud) subsidio))
+  (descuentos)
+)
+(descuentos)
