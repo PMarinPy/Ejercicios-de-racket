@@ -1,0 +1,26 @@
+#lang racket
+;-Dados corno datos la marca de un vehículo y su precio, calcule e imprima el valor final que debe pagar el comprador.
+;Teniendo en cuenta un descuento dependiendo de la marca y el precio con base en la siguiente tabla.
+(define(m p d )
+  (displayln (* p d)))
+
+(define (carroprecio)
+  (define p 0)
+  (define n 0)
+  (display "Función para calcular el descuento de un auto.\nDigite el precio: ")
+  (set! p (read))
+  (display "\nDigite:\n1. Para Mazda.\n2. Para Chevrolet. \n3. Para Renault. ")
+  (set! n (read))
+  (display "El precio es: ")
+  (if (= n 1 )
+      (if (> p 25000000)
+          (m p 0.85)
+          (m p 0.88))
+      (if (= n 2)
+          (if (> p 2500000)
+              (m p 0.83 )
+              (m p 0.87))
+              (m p 0.90)))
+  (carroprecio))
+
+(carroprecio)
