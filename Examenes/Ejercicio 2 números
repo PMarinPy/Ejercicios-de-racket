@@ -1,0 +1,38 @@
+#lang racket
+(define(prdos n)
+  (floor(/ n 10))
+  )
+(define (hallaruno n)
+  (floor(/ n 100)))
+
+(define (ultdos n)
+  (set! n (- (*(hallaruno n)100) n))
+  (if (< n 0 )
+      (* n -1)
+      n))
+
+(define (ejecutar)
+  (define n 0)
+  (define s 0)
+  (display "Está usanfo una funcion para devolver los dos primeros y dos últimos numeros de uno de tres cifras positivo.\nDigite su número: ")
+  (set! n (read))
+  (if (and (> n 0)(< n 1000))
+      (begin
+        (display "Las primeras dos cifras son: ")
+        (displayln (prdos n))
+        (display "Y las últimas dos son: ")
+        (displayln (ultdos n)))
+      (begin
+        (displayln "El numero no es de tres cifras positivo.\nEjecutando de nuevo. ")
+        (ejecutar)))
+  (display "¿Desea ejecutar de nuevo?\n1. Para sí.\n2. Para no. ")
+  (set! s (read))
+ (if (= s 1)
+     (ejecutar)
+     (if (= s 2)
+         (display "Gracias, hasta luego.")
+         (display "Opción inválida. \nCerrando programa. ")))
+  
+  )
+
+(ejecutar)
