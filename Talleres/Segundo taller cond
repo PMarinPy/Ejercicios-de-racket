@@ -1,0 +1,8 @@
+#lang racket
+(define (bisiesto a)
+  (if (or (exact? (/ a 400))(and (exact? (/ a 4))   (not (exact? (/ a 100)) )))
+      (display "bisesto")
+      (display "no bisiesto")))
+
+(bisiesto 2000
+ )
