@@ -1,0 +1,50 @@
+#lang racket
+;Funcion para sumar minuto y mostrarlo
+(define (segundos s)
+  (if (= s 59)
+      0
+      (+ s 1)))
+(define (minuto m s)
+  (if (and (= s 59)(= m 59))
+      00
+      m))
+(define (hora h m s)
+  (if (and (not(= h 23))(= m 59)(= s 59))
+      (+ h 1)
+      (if (and(= h 23)(= m 59)(= s 59))
+          00
+          h)
+      ))
+
+(define (mostrar)
+  (define h 0)
+  (define m 0)
+  (define s 0)
+  (define hp 0)
+  (define mp 0)
+  (define sp 0)
+  (display "Función para calcular el segundo siguiente.\nDigite la hora: ")
+  ;Seteamos las h y prevenimos error
+  (set! h (read))
+  (if (or (not(integer? h)) (< h 0) (> h 23))
+      (begin (display "Error en la digitación.\nEjecutando de nuevo.\n")(mostrar))
+      (display ""))
+  (display "Digite los minutos: ")
+  ;Seteamos los m y prevenimos error
+  (set! m (read))
+  (if (or(not(integer? m)) (< m 0) (> m 59))
+      (begin (display "Error en la digitación.\nEjecutando de nuevo.")(mostrar))
+      (display ""))
+  (display "Digite los segundos: ")
+  ;Seteamos los s y prevenimos error
+  (set! s (read))
+  (if (or(not(integer? s))(< s 0)(> s 59))
+      (begin (display "Error en la digitación.\nEjecutando de nuevo.")(mostrar))
+      (display ""))
+  (set! sp (segundos s))
+  (set! mp (minuto m s))
+  (set! hp (hora h m s))
+  (printf "El próximo segundo será: ~a | ~a | ~a \n----------\n" hp mp sp)
+  (mostrar)
+  )
+(mostrar)
