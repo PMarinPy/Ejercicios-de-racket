@@ -16,18 +16,11 @@
 
 (define (ultd dia m a)
   (if (= dia (dias m a))
-      true
-      false)
-  )
+      (set! dia 1)
+      (set! dia (+ dia 1)))
+  dia)
 
-(define (ultm f m)
-  (if (f)
-      (if (= m 12)
-          1
-          (+ m 1))
-      m)
-  )
-
+(define (ultm ))
 (define (reloj)
   (define a 0)
   (define m 0)
