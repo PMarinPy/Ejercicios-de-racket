@@ -1,0 +1,10 @@
+#lang racket
+(define (calcularm x m c)
+  (if (> (quotient x m) 0)
+     (if (> (remainder x m) c)
+         (calcularm x (* m 10) (remainder x m))
+         (calcularm x (* m 10) c))
+     (display""))
+  c)
+
+(calcularm 19057721 10 1)
