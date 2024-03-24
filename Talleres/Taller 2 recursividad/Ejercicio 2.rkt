@@ -1,0 +1,13 @@
+#lang racket
+(define (nums n c m)
+  (if (> (quotient n m) 0)
+      (nums n (+ c 1) (* m 10))
+      c))
+(define (calcular)
+  (define n 0)
+  (define c 1)
+  (define m 10)
+  (display "Función para calcular cuantas cifras tiene un número.\nDigite el número: ")
+  (set! n (read))
+  (nums n c m))
+(calcular)
