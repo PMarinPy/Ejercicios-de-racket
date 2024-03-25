@@ -3,15 +3,15 @@
 (define (segundos s)
   (if (= s 59)
       0
-      (+ s 1)))
+      0))
 (define (minuto m s)
-  (if  (and(= s 59)(= 59 m))
+  (if  (= 59 m)
        0
-       m))
+       (+ m 1)))
 (define (hora h m s)
   (if (and (not(= h 23)) (= m 59))
       (+ h 1)
-      (if (and(= h 23)(= m 59)(= s 59))
+      (if (and(= h 23)(= m 59))
           00
           h)
       ))

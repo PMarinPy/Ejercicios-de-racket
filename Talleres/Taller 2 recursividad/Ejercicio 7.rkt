@@ -1,20 +1,20 @@
 #lang racket
 (define (maximo_digito n m c i)
-  (cond ((= n 0) (printf "El menor número es el: ~a y está en el índice: ~a" m (- c i))) 
-        (else 
-          (maximo_digito (quotient n 10) 
-                         (if (< (remainder n 10) m) 
+  (if (= n 0)
+      (printf "El menor número es el: ~a y está en el índice: ~a" m (+ 1 (- c i)))
+      (maximo_digito (quotient n 10) 
+                         (if (<= (remainder n 10) m) 
                              (remainder n 10) 
                              m)
                          (+ c 1)
-                         (if (< (remainder n 10) m) 
+                         (if (<= (remainder n 10) m) 
                              (+ c 1)
-                             i)))))
+                             i))))
 
 
 (define (usar)
   (define n 0)
   (display "Función para retornar el índice y el número más grande de otro número.\nDigite el número: ")
   (set! n (read))
-  (maximo_digito n 0 0 0))
+  (maximo_digito n 10 0 0))
 (usar)
