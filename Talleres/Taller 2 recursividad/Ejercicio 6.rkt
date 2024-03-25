@@ -6,7 +6,8 @@
           (maximo_digito (quotient n 10) 
                          (if (> (remainder n 10) maximo) 
                              (remainder n 10) 
-                             maximo)))))  
+                             maximo)
+                         ))))  
 
 (define (usar)
   (define n 0)
