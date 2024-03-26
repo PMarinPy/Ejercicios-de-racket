@@ -1,7 +1,7 @@
 #lang racket
 (define (maximo_digito n m c i)
   (if (= n 0)
-      (printf "El menor número es el: ~a y está en el índice: ~a" m (+ 1 (- c i)))
+      m
       (maximo_digito (quotient n 10) 
                          (if (<= (remainder n 10) m) 
                              (remainder n 10) 
@@ -11,10 +11,21 @@
                              (+ c 1)
                              i))))
 
+(define (buscaresenum x n c)
+  (if (not(= n 0))
+      (begin
+        (if (= (remainder n 10) x)
+            (printf "El ~a fue encontrado en el índice ~a\n" x c)
+            (display ""))
+        (buscaresenum x (quotient n 10) (+ c 1)))
+      (display "")))
 
 (define (usar)
   (define n 0)
-  (display "Función para retornar el índice y el número más grande de otro número.\nDigite el número: ")
+  (define x 0)
+  (display "Función para retornar los índices del número más grande de otro número.\nDigite el número: ")
   (set! n (read))
-  (maximo_digito n 10 0 0))
+  (set! x (maximo_digito n 10 0 0))
+  (buscaresenum x n 0)
+  )
 (usar)
