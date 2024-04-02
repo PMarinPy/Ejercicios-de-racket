@@ -1,0 +1,18 @@
+#lang racket
+(define (base n x)
+  (if (> n 0)
+      (begin
+        (base (quotient n x) x)
+        (display (remainder n x)))
+      (display "")))
+(define (mostrar)
+  (define n 0)
+  (define x 0)
+  (display "Digite el número que desea convertir: ")
+  (set! n (read))
+  (display "A qué base: ")
+  (set! x (read))
+  (display "El número es el: ")
+  (base n x)
+  )
+(mostrar)
