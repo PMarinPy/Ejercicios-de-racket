@@ -1,0 +1,18 @@
+(define (esp n )
+  (if (> n 1)
+      (begin
+        (display " ")
+        (esp (- n 1 )))
+      (display ""))
+  
+  )
+(define (mostrar n)
+  (if (>= n 1)
+      (begin
+        (esp n )
+        (display "A")
+        (newline)
+        (mostrar (- n 1)))
+      (display ""))
+  )
+(mostrar 18)
