@@ -1,0 +1,36 @@
+#lang racket
+(define (esprimo n c)
+  (if (< c (+ 1 (floor (/ n 2))))
+      (if (= 0 (remainder n c))
+          #f
+          (esprimo n (+ c 1)))
+      #t))
+(define (imprimirc n)
+  (if (>= 100 n)
+      (if (esprimo n 2)
+          (imprimirc (+ n 1))
+          (begin
+            (printf "El ~a no es primo.\n" n)
+            (imprimirc (+ n 1))))
+      (display "")))
+
+(define (ppal)
+  (imprimirc 1)
+  )
+;(ppal)
+; VERSIÓN 2
+(define (imprimir x n)
+  (if (>= x n)
+      (if (esprimo n 2)
+          (imprimir x (+ n 1))
+          (begin
+            (printf "El ~a no es primo.\n" n)
+            (imprimir x (+ n 1))))
+      (display "")))
+(define (ppall)
+  (define x 0)
+  (display "Digite hasta qué número: ")
+  (set! x (read))
+  (imprimir x 1)
+  )
+(ppall)

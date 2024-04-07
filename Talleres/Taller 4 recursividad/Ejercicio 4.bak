@@ -1,0 +1,18 @@
+#lang racket
+(define (esprimo n c vf)
+
+  (if (> n 0) ;contador del caso base
+      (begin
+
+        (if 1 (> (+ 1 (floor (/ c 2)))  );Solo miramos los numeros hasta la mitad de n, puesto que después de este no habrán divisores
+
+            (if (= 0 (remainder n c))
+                (esprimo n (+ c 1) #f)
+                (esprimo n (+ c 1) #t))
+
+            (display ""))) ;lito :)
+      (display ""))
+  vf)
+
+(esprimo 20 1 0)
+

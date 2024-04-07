@@ -1,0 +1,27 @@
+#lang racket
+(define (mostrarletra n)
+  (if (>= n 1)
+      (begin
+        (display "P")
+        (mostrarletra (- n 1))
+        )
+      (display "")))
+
+(define (mostraresp c n)
+  (if (> n c)
+      (begin
+        (display " ")
+        (mostraresp (+ c 1) n)
+      )
+      (display "")))
+
+
+(define (mostrar n)
+  (if (>= n 1)
+      (begin
+        (mostraresp 0 n)
+        (mostrarletra (- n 1))
+        (newline)
+        (mostrar (- n 2)))
+      (display "")))
+(mostrar 14)

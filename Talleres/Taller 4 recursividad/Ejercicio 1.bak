@@ -5,9 +5,6 @@
         (base (quotient n x) x)
         (display (remainder n x)))
       (display "")))
-
-
-
 (define (mostrar)
   (define n 0)
   (define x 0)

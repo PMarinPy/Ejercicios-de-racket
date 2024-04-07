@@ -1,0 +1,18 @@
+#lang racket
+(define (pot n p rf)
+  (if (>= 0 p)
+      rf
+      (pot n (- p 1) (* rf n))
+      ))
+(define (potencia)
+  (define n 0)
+  (define p 0)
+  (display "Qué número desea elevar?: ")
+  (set! n (read))
+  (display "A qué número?: ")
+  (set! p (read))
+  (display (pot n p 1))
+  (newline)
+  (potencia)
+  )
+(potencia)

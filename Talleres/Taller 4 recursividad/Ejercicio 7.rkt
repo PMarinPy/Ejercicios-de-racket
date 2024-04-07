@@ -1,0 +1,33 @@
+#lang racket
+(define (pot n p rf)
+  (if (>= 0 p)
+      rf
+      (pot n (- p 1) (* rf n))
+      ))
+(define (seriedos n rf)
+  (if (> n 0)
+      (begin
+       (seriedos (- n 1)(+ rf (pot 2 (- n 1) 1))))
+      rf))
+(define (pedir)
+  (define n 0)
+  (display "Cúantos números de la secuencia desea sumar?: ")
+  (set! n (read))
+  (printf "La sumatoria total es: ~a\n" (seriedos n 0))
+  (pedir))
+;VERSION MEJORADA
+(define (basen b n rf)
+  (if (> n 0)
+      (begin
+       (basen b (- n 1) (+ rf (pot b (- n 1) 1) )))
+      rf))
+(define (pedirn)
+  (define n 0)
+  (define b 0)
+  (display "Cúantos números de la secuencia desea sumar?: ")
+  (set! n (read))
+  (display "Cúal es la base de la serie?: ")
+  (set! b (read))
+  (printf "La sumatoria total es: ~a\n" (basen b n 0))
+  (pedirn))
+(pedirn)

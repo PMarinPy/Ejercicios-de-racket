@@ -1,0 +1,12 @@
+#lang racket
+
+(define (divisores n c d)
+  (if (> n 0)
+      (begin
+        (if (> (+ 1 (floor (/ n 2))) c )
+            (if (= 0 (remainder n c))
+                (divisores n (+ c 1) (+ d 1))
+                (divisores n (+ c 1) d))
+            (printf "Los divisores de ~a con 1 e incluyéndolo a sí mismo son: ~a" n (+ d 1))))
+        (display "")))
+(divisores 1000 1 0)

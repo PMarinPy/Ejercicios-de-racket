@@ -1,0 +1,17 @@
+#lang racket
+(define (operar x n)
+  (if (>= n 1)
+      (begin
+        (operar (+ x 1)(- n 1))
+        (displayln (/ (- (* 2 n) 1) (- x  (* 2 (- n 1)) ) )))
+      (display "")
+      ))
+(define (mostrar)
+  (define x 0)
+  (define n 0)
+  (display "Digite la cantidad de términos: ")
+  (set! n (read))
+  (display "Digite el término x: ")
+  (set! x (read))
+  (operar x n))
+(mostrar)
