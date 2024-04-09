@@ -1,0 +1,9 @@
+#lang racket
+(define (contar vec n c cant)
+  (if (< c (vector-length vec))
+      (if (= n (vector-ref vec c))
+          (contar vec n (+ c 1) (+ cant 1))
+          (contar vec n (+ c 1) cant))
+      c))
+(define unoax (vector 10 1 4 1 3 5 5 6 7 8 9 10))
+(contar unoax 4 0)
