@@ -1,0 +1,9 @@
+#lang racket
+(require "crear.rkt")
+(define (promedio vec sum cont)
+  (if (< cont (- (vector-length vec) 1))
+      (promedio vec (+ sum (vector-ref vec cont)) (+ cont 1))
+      sum))
+(define vec (crear 5 5))
+(display vec)
+(promedio vec 0 0)

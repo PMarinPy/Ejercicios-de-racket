@@ -1,0 +1,7 @@
+#lang racket
+(define (encontrar vec n ind)
+  (if  (< ind (- len 1));contador de longitud del vector
+           (if (= (vector-ref vec ind) num)
+               ind
+               (encontrar vec n (+ ind 1))) ;state t
+               ))

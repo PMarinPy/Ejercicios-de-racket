@@ -11,7 +11,7 @@
 
 (define (usar)
   (define vec (crear 10 10))
-  (define vec2 (vectorand 10))
-  (printf "El vector a invertir es el: ~a \nEle resultado es: " vec)
-  (invertir vec vec2 (- (vector-length vec) 1) 0))
+  (display vec)
+  (display unoax)
+  (invertir vec vec (- (vector-length vec) 1) 0))
 (usar)
