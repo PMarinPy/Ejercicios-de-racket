@@ -125,6 +125,8 @@
   
   (display "\n\n¿De qué tamaño desea crear su parqueadero? ")
   (set! espacio (read))
+  (set! vechoras (make-vector espacio -1))
+  (set! vecplacas (make-vector espacio -1))
   (set! op (pedirn))
   (cond
     [(= op 1)()]
@@ -133,6 +135,7 @@
     [(= op 4)()]
     [(= op 5)()]
     [(= op 6)()]
+
     )
   )
 
