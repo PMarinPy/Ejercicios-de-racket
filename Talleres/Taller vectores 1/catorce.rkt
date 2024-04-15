@@ -71,6 +71,17 @@
 
 (define (pedirn)
   (display "
+\n\n¡BIENVENIDO AL PARQUEADERO INTELIGENTE!\n¿Qué función desea utilizar?\n
+1.REGISTRAR INGRESO DE UN AUTO\n2.CALCULAR EL TIEMPO QUE UN AUTO LLEVA PARQUEADO\n3.REGISTRAR LA SALIDA DE UN VECHÍCULO\n4.INDICAR CUANTOS ESPACIOS HAY DISPONIBLES\n5.CUANTOS AUTOS HAY PARQUEADOS HACE MÁS DE 8 HORAS\n6.SALIR ")
+  (read))
+
+(define (PARQUEADERO)
+  (define espacio 0)
+  (define op 0)
+  (define espmod 0)
+  (define vechoras 0)
+  (define vecplacas 0)
+  (display "
 ((((///((((((((((((((((//((((((((((((((/(/((((((((((((((((/(((((((((((((((/((((((((((((((((//(((((((
 (((//((((((((((((((((((((((((((((((((/(((((((((((((((((/(((((((((((((((//(((((((((((((((//((((((((((
 (((((((((((((((((((((((((((((((((((//((((((((((((((((((((((((((((((((//(((((((((((((((((((((((((((((
@@ -110,17 +121,20 @@
 (/%((((((             ###############################      ####################     (###############
 /((((((((((###########################################    ######################    ################
 (((((((((((((/######################################################################################
-((((((((((///(((/#############################################(#####################################
-\n\n¡BIENVENIDO AL PARQUEADERO INTELIGENTE!\n¿Qué función desea utilizar?\n
-1.REGISTRAR INGRESO DE UN AUTO\n2.CALCULAR EL TIEMPO QUE UN AUTO LLEVA PARQUEADO\n3.REGISTRAR LA SALIDA DE UN VECHÍCULO\n4.INDICAR CUANTOS ESPACIOS HAY DISPONIBLES\n5.CUANTOS AUTOS HAY PARQUEADOS HACE MÁS DE 8 HORAS\n6.SALIR"))
-
-(define (PARQUEADERO)
-  (define espacio 0)
-  (define espmod 0)
-  (define vechoras 0)
-  (define vecplacas 0)
-  (display "¿De qué tamaño desea crear su parqueadero? ")
-  (set! espacio (read))
+((((((((((///(((/#############################################(#####################################")
   
+  (display "\n\n¿De qué tamaño desea crear su parqueadero? ")
+  (set! espacio (read))
+  (set! op (pedirn))
+  (cond
+    [(= op 1)()]
+    [(= op 2)()]
+    [(= op 3)()]
+    [(= op 4)()]
+    [(= op 5)()]
+    [(= op 6)()]
+    )
   )
 
+  
+(PARQUEADERO)
