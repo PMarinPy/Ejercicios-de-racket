@@ -32,14 +32,6 @@
             (sumarfilas vector (+ contfil 1) 0 0)))
       (display "")))
 
-
-
-
-
-
-
-
-
 (define (sumarcols vector cols contfil contcol sum)
   (if (< contcol cols)
       (if (< contfil (vector-length vector))
