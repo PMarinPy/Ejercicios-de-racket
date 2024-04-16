@@ -14,7 +14,7 @@
       -1))
 
 (define (ingreso vecplacas vechoras indice espacio espmod)
-  (if (= espacio (- espacio 1))            
+  (if (= espacio (- espacio espmod))            
       (display "No hay espacio en el parqueadero. ")
       (if (< indice espacio)
           (begin
@@ -41,7 +41,7 @@
   (vector-set! vechoras indice -1)
   (set! espmod (+ espmod 1)))
 
-(define (horastotales vecplacas vechoras espacio espmod)
+(define (horastotales vecplacas vechoras espmod espacio)
   (define placa 0)
   (define h 0)
   (display "Digite la placa del vehículo: ")
@@ -52,8 +52,8 @@
   (display (- h (vector-ref vechoras (buscarplaca placa 0 vecplacas espacio))))
   )
 ;//FUNCION QUE DICE CUANTOS ESPACIOS HAY DISPONIBLES 
-(define (disponibles espmod)
-  (printf "Los espacios disponibles son: ~a" espmod))
+(define (disponibles espmod espacio)
+  (printf "Los espacios disponibles son: ~a" (- espmod espacio)))
 
 (define (operarocho vechoras indice hora cantidad espacio)
   (if (< indice espacio)
@@ -75,13 +75,12 @@
 1.REGISTRAR INGRESO DE UN AUTO\n2.CALCULAR EL TIEMPO QUE UN AUTO LLEVA PARQUEADO\n3.REGISTRAR LA SALIDA DE UN VECHÍCULO\n4.INDICAR CUANTOS ESPACIOS HAY DISPONIBLES\n5.CUANTOS AUTOS HAY PARQUEADOS HACE MÁS DE 8 HORAS\n6.SALIR ")
   (read))
 
-
 (define (PARQUEADERO)
   (define espacio 0)
   (define op 0)
   (define espmod 0)
-  (define vechoras (make-vector espacio -1))
-  (define vecplacas (make-vector espacio -1))
+  (define vechoras 0)
+  (define vecplacas 0)
   (display "
 ((((///((((((((((((((((//((((((((((((((/(/((((((((((((((((/(((((((((((((((/((((((((((((((((//(((((((
 (((//((((((((((((((((((((((((((((((((/(((((((((((((((((/(((((((((((((((//(((((((((((((((//((((((((((
@@ -123,19 +122,21 @@
 /((((((((((###########################################    ######################    ################
 (((((((((((((/######################################################################################
 ((((((((((///(((/#############################################(#####################################")
+  
+  (display "\n\n¿De qué tamaño desea crear su parqueadero? ")
+  (set! espacio (read))
+  (set! vechoras (make-vector espacio -1))
+  (set! vecplacas (make-vector espacio -1))
+  (set! op (pedirn))
+  (cond
+    [(= op 1)()]
+    [(= op 2)()]
+    [(= op 3)()]
+    [(= op 4)()]
+    [(= op 5)()]
+    [(= op 6)()]
 
-  (if (not(= op 6))
-      (begin
-        (set! op (pedirn))
-        (cond
-          [(= op 1)(ingreso vecplacas vechoras 0 espacio espmod)]
-          [(= op 2)(horastotales vecplacas vechoras espacio espmod)]
-          [(= op 3)(salida vecplacas vechoras espacio espmod)]
-          [(= op 4)(disponibles espmod)]
-          [(= op 5)(ochoras vechoras)]
-          )
-        )
-      (display "Chao"))
+    )
   )
 
   
