@@ -32,6 +32,7 @@
             (sumarfilas vector (+ contfil 1) 0 0)))
       (display "")))
 
+<<<<<<< HEAD
 (define (promedio vector cols contfil contcol sum)
   (if (< contcol cols)
       (if (< contfil (vector-length vector))
@@ -42,6 +43,8 @@
             (promedio vector cols 0 (+ contcol 1) 0)))
       (display "")))
 
+=======
+>>>>>>> 6ac4951bcb54ad21d2a4b737d6c5b5a997ac017f
 (define (sumarcols vector cols contfil contcol sum)
   (if (< contcol cols)
       (if (< contfil (vector-length vector))
