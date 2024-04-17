@@ -28,17 +28,19 @@
           (begin
             (sumarfilas vector contfil (+ contcol 1) (+ sum (vector-ref (vector-ref vector contfil) contcol))))
           (begin
-            (printf "\nLa suma la fila ~a da como resultado ~a\n" contfil sum)           
+            (printf "\nLa suma de la fila ~a da como resultado ~a\n" contfil sum)           
             (sumarfilas vector (+ contfil 1) 0 0)))
       (display "")))
 
-
-
-
-
-
-
-
+(define (promedio vector cols contfil contcol sum)
+  (if (< contcol cols)
+      (if (< contfil (vector-length vector))
+          (begin
+            (promedio vector cols (+ contfil 1) contcol (+ sum (vector-ref (vector-ref vector contfil) contcol))))
+          (begin
+            (printf "\nEl promedio de la columna ~a da como resultado ~a\n" contcol (round (/ sum cols)))           
+            (promedio vector cols 0 (+ contcol 1) 0)))
+      (display "")))
 
 (define (sumarcols vector cols contfil contcol sum)
   (if (< contcol cols)
@@ -67,6 +69,6 @@
   (newline)
   (display "-------------------------")
   (newline)
-  (sumarcols vector cols 0 0 0))
+  (promedio vector cols 0 0 0))
 
 (pedir)
