@@ -1,0 +1,9 @@
+#lang racket
+(define (calcularmenor cont vector num)
+  (if (< cont (vector-length vector))
+      (if (< (vector-ref vector cont) num)
+          (calcularmenor (+ cont 1) vector (vector-ref vector cont))
+          (calcularmenor (+ cont 1) vector num))
+      num))
+(define vectorm (vector -214341 5 3 8 7 5 0 24 -124 -126 59843 0))
+(calcularmenor 0 vectorm (vector-ref vectorm 0))

@@ -1,0 +1,41 @@
+#lang racket
+(define (hacer vec p n)
+  (if (< p (vector-length vec))
+      (begin
+        (vector-set! vec p (random 0 (+ n 1)))
+        (hacer vec (+ p 1) n))
+      void
+      )
+  )
+
+(define (crear x n)
+  (define vec (make-vector x 0))
+  (hacer vec 0 n)
+  vec
+   )
+
+(define (moda vec cont n sum)
+  (if (< cont (vector-length vec))
+      (if (= (vector-ref vec cont) n)
+          (moda vec (+ cont 1) n (+ sum 1))
+          (moda vec (+ cont 1) n sum))
+      sum))
+
+(define (comparar vec cont rep s)
+  (if (< cont (vector-length vec))
+      (if (> (moda vec 0 (vector-ref vec cont) 0) rep)
+          (comparar vec (+ cont 1) (vector-ref vec cont) 1)
+          (comparar vec (+ cont 1) rep s)
+          )
+      (if (= s 1)
+          ()
+          (printf "El número que más se repite es: ~a"rep))))
+(define (mostrar)
+  (define n 0)
+  (define vec 0)
+  (display "Cantidad de datos del vector: ")
+  (set! n (read))
+  (set! vec (crear n 30))
+  (display vec)
+  (comparar vec 0 0))
+(mostrar)
