@@ -1,0 +1,17 @@
+#lang racket
+(define (contar s esp cont c)
+  (if (< cont (string-length s))
+      (contar s (if (char=? (string-ref s cont) c )
+                    (+ esp 1)
+                    esp) (+ cont 1) c)
+      (+ esp 1)))
+
+(define (borrar c ind ind2 str strf)
+  (if (< ind (string-length str))
+      (begin
+        (if (not(char=? c (string-ref str ind)))
+            (begin
+              (string-set! strf ind2 (string-ref str ind))
+              (borrar c (+ ind 1)(+ ind2 1) str strf))
+            (borrar c (+ 1 ind) ind2 str strf)))
+      strf))
