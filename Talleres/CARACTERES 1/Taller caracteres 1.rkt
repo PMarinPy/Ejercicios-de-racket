@@ -16,8 +16,8 @@
 (EsVocal #\U)
 (define (vocal c)
   (if (EsVocal c)
-      (display "Es una bocal")
-      (display "No es una bocal ")))
+      (display "Es una vocal")
+      (display "No es una vocal ")))
 ;EJERCICIO 4
 (define (comp c1 c2)
   (cond
