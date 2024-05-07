@@ -86,31 +86,41 @@
 ;-------------------------------
 ;FUNCIÓN PARA INGRESAR UN PRODUCTO NUEVO
 (define (ingresar basedatos nombre passw ind)
+  (define producto 0)
+  (set! producto (llenar nombre passw ind))
+  (vector-set! basedatos ind producto)
+  (display basedatos)
+  (menu basedatos nombre passw (+ ind 1)))
+
+;FUNCIÓN PARA LLENAR CADA VECTOR CON DATOS DE UN PRODUCTO.
+(define (llenar nombre passw ind)
+  (define datos (make-vector 8 0))
   (define medida 0)
   (define nombre 0)
   (display "Por motivos de seguridad, debe ingresar la contraseña de encriptación del sistema..\nContraseña: ")
   (if (= (read) passw)
       (begin                  
-        (printf "¿Cúal será la ID del producto que desea ingresar a la base de datos?\n")
-        (vector-set! basedatos 0 (+ (read) passw))
+        (printf "¿Cúal será la ID del producto que desea ingresar a la base de datos?(número)\n")
+        (vector-set! datos 0 (+ (read) passw))
         (read-char);limpia el buffer
         (printf "¿Tipo de producto?\n")
-        (vector-set! basedatos 1 (encarac (read-char) passw))
+        (vector-set! datos 1 (encarac (read-char) passw))
+        (read-char)
         (display "¿Cúal es el nombre del producto?\n")
         (set! nombre (read-line))
-        (vector-set! basedatos 2 (encriptar nombre passw 0 (make-string (string-length nombre) #\a)))
-        (vector-set! basedatos 3 (fecha? passw))
+        (vector-set! datos 2 (encriptar nombre passw 0 (make-string (string-length nombre) #\a)))
+        (vector-set! datos 3 (fecha? passw))
         (display "Digite la unidad de medida del producto: ")
+        (read-char)
         (set! medida (read-line))
-        (vector-set! basedatos 4 (encriptar medida passw 0 (make-string (string-length medida) #\a)))
-        (valor passw basedatos)
-        (display basedatos)
+        (vector-set! datos 4 (encriptar medida passw 0 (make-string (string-length medida) #\a)))
+        (valor passw datos)
         )
       (begin
        (display "La contraseña no es correcta.\nEjecutando de nuevo.")
-       (ingresar basedatos nombre passw (+ ind 1))
+       (llenar datos nombre passw ind 1)
        ))
-  (menu basedatos nombre passw ind)
+  datos
 )
 
 ;FUNCIÓN PARA CREAR EL SUPERMERCADO
@@ -121,13 +131,13 @@
   (display "¿Cúal es el nombre de su supermercado?\n")
   (set! nombre (read-line))
   (printf "¿Cuántos productos tendrá ~a?\n" nombre)
-  (set! basedatos (make-vector (read) (make-vector 8 0)))
+  (set! basedatos (make-vector (read) 0))
   (display "\n¿Cúal es la contraseña de seguridad para la encriptación?\n")
   (set! passw (read))
-  (menu basedatos nombre passw))
+  (menu basedatos nombre passw 0))
 ;FUNCIÓN PARA MOSTRAR EL MENÚ
-(define (menu basedatos nombre passw)
-  (display "     @@@@@                                         
+(define (menu basedatos nombre passw ind)
+  (display "\n     @@@@@                                         
          .@                                         
           @@                                        
           @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
@@ -164,7 +174,7 @@
   (displayln "|   5    |  Listado general de productos         |")
   (displayln "|   6    |  Salir                                |")
   (displayln "+------------------------------------------------+")
-  (usarmenu (read) basedatos nombre passw 0)
+  (usarmenu (read) basedatos nombre passw ind)
   )
 ;FUNCIÓN PARA LLAMAR A LAS FUNCIONES CORRESPONDIENTES.
 (define (usarmenu op basedatos nombre passw ind)
