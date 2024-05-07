@@ -36,22 +36,97 @@
         (string-set! strf ind (desencarac (string-ref str ind) sem))
         (desencrip str sem (+ ind 1) strf))
       strf))
+;FUNCIONES COMPLEMENTARIAS PARA LA FECHA DE VENCIMIENTO
+(define (bisiesto a)
+  (if (and (= 0 (remainder a 4)) (or (not(= 0 (remainder a 100))) (= 0 (remainder a 400))))
+      #t
+      #f))
+(define (dias m a)
+  (if (= m 2)
+      (if (bisiesto a)
+          29
+          28)
+      (if (or (= m 4)(= m 6)(= m 9)(= m 11))
+          30
+          31)))
+(define (fecha? passw)
+  (define d 0)
+  (define m 0)
+  (define a 0)
+  (define fecha 0)
+  (display "Digite el año de vencimiento (número): ")
+  (set! a (read))
+  (display "Digite el mes de vencimiento (número): ")
+  (set! m (read))
+  (display "Digite el día de vencimiento: ")
+  (set! d (read))
+  (if (< d (dias m a))
+      (begin
+        (set! fecha (vector (+ passw d) (+ m passw) (+ a passw)))
+        fecha)
+      (begin
+        (display "Digite una fecha válida.\nEjecutando de nuevo.\n")
+      (fecha? passw))))
+;FUNCIÓN PARA MODIFICAR EL PRECIO, VALOR UNITARIO Y TOTAL
+(define (valor passw basedatos)
+  (define vu 0)
+  (define vt 0)
+  (define cu 0)
+  (display "Digite la cantidad de unidades del producto: ")
+  (set! cu (read))
+  (vector-set! basedatos 5 (+ passw cu))
+  (display "Digite el valor unitario del producto:")
+  (set! vu (read))
+  (vector-set! basedatos 6 (+ passw vu))
+  (vector-set! basedatos 7 (+ passw (* vu cu)))
+  basedatos
+  )
 
 ;CREACIÓN DE FUNCIONES PARA MANIPULACIÓN DE LA BASE DE DATOS.
 ;-------------------------------
-;FUNCIÓN PARA 
+;FUNCIÓN PARA INGRESAR UN PRODUCTO NUEVO
+(define (ingresar basedatos nombre passw ind)
+  (define medida 0)
+  (define nombre 0)
+  (display "Por motivos de seguridad, debe ingresar la contraseña de encriptación del sistema..\nContraseña: ")
+  (if (= (read) passw)
+      (begin                  
+        (printf "¿Cúal será la ID del producto que desea ingresar a la base de datos?\n")
+        (vector-set! basedatos 0 (+ (read) passw))
+        (read-char);limpia el buffer
+        (printf "¿Tipo de producto?\n")
+        (vector-set! basedatos 1 (encarac (read-char) passw))
+        (display "¿Cúal es el nombre del producto?\n")
+        (set! nombre (read-line))
+        (vector-set! basedatos 2 (encriptar nombre passw 0 (make-string (string-length nombre) #\a)))
+        (vector-set! basedatos 3 (fecha? passw))
+        (display "Digite la unidad de medida del producto: ")
+        (set! medida (read-line))
+        (vector-set! basedatos 4 (encriptar medida passw 0 (make-string (string-length medida) #\a)))
+        (valor passw basedatos)
+        (display basedatos)
+        )
+      (begin
+       (display "La contraseña no es correcta.\nEjecutando de nuevo.")
+       (ingresar basedatos nombre passw (+ ind 1))
+       ))
+  (menu basedatos nombre passw ind)
+)
 
 ;FUNCIÓN PARA CREAR EL SUPERMERCADO
 (define (crearsuper)
   (define basedatos 0)
   (define nombre 0)
+  (define passw 0)
   (display "¿Cúal es el nombre de su supermercado?\n")
   (set! nombre (read-line))
   (printf "¿Cuántos productos tendrá ~a?\n" nombre)
   (set! basedatos (make-vector (read) (make-vector 8 0)))
-  (menu basedatos nombre))
+  (display "\n¿Cúal es la contraseña de seguridad para la encriptación?\n")
+  (set! passw (read))
+  (menu basedatos nombre passw))
 ;FUNCIÓN PARA MOSTRAR EL MENÚ
-(define (menu basedatos nombre)
+(define (menu basedatos nombre passw)
   (display "     @@@@@                                         
          .@                                         
           @@                                        
@@ -89,25 +164,27 @@
   (displayln "|   5    |  Listado general de productos         |")
   (displayln "|   6    |  Salir                                |")
   (displayln "+------------------------------------------------+")
+  (usarmenu (read) basedatos nombre passw 0)
   )
 ;FUNCIÓN PARA LLAMAR A LAS FUNCIONES CORRESPONDIENTES.
-(define (usarmenu op basedatos nombre)
+(define (usarmenu op basedatos nombre passw ind)
   (cond
     [(= op 1)(begin
-               
-               (menu basedatos nombre))]
+               (ingresar basedatos nombre passw ind)
+               ;(menu basedatos nombre passw)
+               )]
     [(= op 2)(begin
                
-               (menu basedatos nombre))]
+               (menu basedatos nombre passw))]
     [(= op 3)(begin
                
-               (menu basedatos nombre))]
+               (menu basedatos nombre passw))]
     [(= op 4)(begin
                
-               (menu basedatos nombre))]
+               (menu basedatos nombre passw))]
     [(= op 5)(begin
                
-               (menu basedatos nombre))]
+               (menu basedatos nombre passw))]
     [(= op 6)("¡MUCHAS GRACIAS POR USAR NUESTRA BASE DE DATOS!")]
     ))
 
