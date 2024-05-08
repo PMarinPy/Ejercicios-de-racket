@@ -81,7 +81,52 @@
   (vector-set! basedatos 7 (+ passw (* vu cu)))
   basedatos
   )
-
+;FUNCIÓN PARA PEDIR ID Y NOMBRE
+(define (idtipo datos passw)
+  (define tipo 0)
+  (define id 0)
+  (printf "¿Cúal será la ID del producto que desea ingresar a la base de datos?(número)\n")
+  (set! id (read))
+  (if (integer? id)
+      (begin
+        (vector-set! datos 0 (+ id passw));limpia el buffer
+        (printf "¿Tipo de producto?\nL para lácteo.\nC Para cárnico.\n")
+        (set! tipo (read-char))
+        (if (char? tipo)
+            (begin
+              (vector-set! datos 1 (encarac (read-char) passw))
+              datos)
+            (begin
+              (display "Error en la digitación del tipo de producto. (solo la inical).\n")
+              (idtipo datos passw))))
+      (begin
+        (display "La ID debe ser un número entero.\n")
+        (idtipo datos passw))
+      ))
+;FUNCIÓN PARA EL NOMBRE Y LA UNIDAD DE MEDIDA
+(define (nombreuni datos passw)
+  (define medida 0)
+  (define nombre 0)
+  (read-char)
+  (display "¿Cúal es el nombre del producto?\n")
+  (set! nombre (read-line))
+  (if (string? nombre)
+      (begin
+        (vector-set! datos 2 (encriptar nombre passw 0 (make-string (string-length nombre) #\a)))
+        (display "Digite la unidad de medida del producto: ")
+        (read-char)
+        (set! medida (read-line))
+        (if (string? medida)
+            (begin
+              (vector-set! datos 4 (encriptar medida passw 0 (make-string (string-length medida) #\a)))
+              datos)
+            (begin
+              (display "Error en la digitación de la medida.\n")
+              (nombreuni datos passw))))
+      (begin
+        (display "Error en la digitación del nombre del producto.\n")
+        (nombreuni datos passw))
+      ))
 ;CREACIÓN DE FUNCIONES PARA MANIPULACIÓN DE LA BASE DE DATOS.
 ;-------------------------------
 ;FUNCIÓN PARA INGRESAR UN PRODUCTO NUEVO
@@ -95,30 +140,17 @@
 ;FUNCIÓN PARA LLENAR CADA VECTOR CON DATOS DE UN PRODUCTO.
 (define (llenar nombre passw ind)
   (define datos (make-vector 8 0))
-  (define medida 0)
-  (define nombre 0)
   (display "Por motivos de seguridad, debe ingresar la contraseña de encriptación del sistema..\nContraseña: ")
   (if (= (read) passw)
-      (begin                  
-        (printf "¿Cúal será la ID del producto que desea ingresar a la base de datos?(número)\n")
-        (vector-set! datos 0 (+ (read) passw))
-        (read-char);limpia el buffer
-        (printf "¿Tipo de producto?\n")
-        (vector-set! datos 1 (encarac (read-char) passw))
-        (read-char)
-        (display "¿Cúal es el nombre del producto?\n")
-        (set! nombre (read-line))
-        (vector-set! datos 2 (encriptar nombre passw 0 (make-string (string-length nombre) #\a)))
+      (begin
+        (idtipo datos passw)
+        (nombreuni datos passw)
         (vector-set! datos 3 (fecha? passw))
-        (display "Digite la unidad de medida del producto: ")
-        (read-char)
-        (set! medida (read-line))
-        (vector-set! datos 4 (encriptar medida passw 0 (make-string (string-length medida) #\a)))
         (valor passw datos)
         )
       (begin
        (display "La contraseña no es correcta.\nEjecutando de nuevo.")
-       (llenar datos nombre passw ind 1)
+       (llenar nombre passw ind)
        ))
   datos
 )
